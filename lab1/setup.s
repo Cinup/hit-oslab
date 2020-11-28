@@ -13,15 +13,15 @@ INITSEG  = 0x0800   ;硬件参数存储地址
 entry _start
 _start:
     mov	ah,#0x03     ;ah=0x03
-	xor	bh,bh        ;
-	int	0x10         ;ah=0x03,获取光标的位置和形状
-	mov	cx,#26
-	mov	bx,#0x0007	
+    xor	bh,bh        ;
+    int	0x10         ;ah=0x03,获取光标的位置和形状
+    mov	cx,#26
+    mov	bx,#0x0007	
     mov ax,#SETUPSEG
     mov es,ax	     ;es=0x07e0
-	mov	bp,#msg2     ;es:bp为字符串地址
-	mov	ax,#0x1301      
-	int	0x10         ;ah=0x13,在显示器上显示字符
+    mov	bp,#msg2     ;es:bp为字符串地址
+    mov	ax,#0x1301      
+    int	0x10         ;ah=0x13,在显示器上显示字符
 
     mov ax,cs        
     mov es,ax        ;ex=0x07e0
@@ -142,8 +142,8 @@ print_nl:
     int    0x10
     ret    
 msg2:
-	.byte 13,10
-	.ascii "Now we are in steup.s"
+    .byte 13,10
+    .ascii "Now we are in setup.s"
     .byte 13,10
 msg_cursor:
     .byte 13,10
@@ -162,7 +162,7 @@ msg_sectors:
     .ascii "Sectors:"
 msg_kb:
     .ascii "KB"
-	.byte 13,10,13,10
+    .byte 13,10,13,10
 .org 512
 .text
 endtext:
