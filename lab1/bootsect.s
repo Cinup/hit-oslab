@@ -14,7 +14,7 @@ entry _start
 ;打印启动字符串
 _start:
     mov	ah,#0x03     ;ah=0x03
-    xor	bh,bh        ;
+    xor	bh,bh        ;bh=0
     int	0x10         ;ah=0x03,获取光标的位置和形状
     mov	cx,#23       ;cx指定字符串长度
     mov	bx,#0x0007	
@@ -27,9 +27,9 @@ _start:
 load_setup:
     mov ax,#BOOTSEG
     mov es,ax	     ;es=0x07c0
-    mov	dx,#0x0000	 ;dx=0x0000 
-    mov	cx,#0x0002	 ;cx=0x0002
-    mov	bx,#0x0200	 ;bx=0x0200
+    mov	dx,#0x0000   ;dx=0x0000 
+    mov	cx,#0x0002   ;cx=0x0002
+    mov	bx,#0x0200   ;bx=0x0200
     mov	ax,#0x0201   ;ax=0x0204
     int	0x13	     ;读取磁盘中断,ah=0x02,al扇区数量,
                      ;ch柱面号,cl开始扇区,dh磁头号,dl驱动器号,es:bx内存地址
